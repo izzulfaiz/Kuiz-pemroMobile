@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:makanan_sehat/detailsPage.dart';
+import 'package:makanan_sehat/minuman.dart';
+import 'package:makanan_sehat/profile.dart';
 
 void main() => runApp(MyApp());
 
@@ -81,23 +83,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.white,
                   onPressed: () {},
                 ),
-                Container(
-                    width: 125.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Icon(Icons.filter_list),
-                          color: Colors.white,
-                          onPressed: () {},
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.menu),
-                          color: Colors.white,
-                          onPressed: () {},
-                        )
-                      ],
-                    ))
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                      width: 125.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          IconButton(
+                            icon: Icon(Icons.person),
+                            color: Colors.white,
+                            onPressed: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return ProfilePage();
+                              }));
+                            },
+                          )
+                        ],
+                      )),
+                )
               ],
             ),
           ),
@@ -146,36 +151,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           _buildFoodItem(_menu[3].imgPath, _menu[3].foodName,
                               _menu[3].price, _menu[3].jumlah, 3)
                         ]))),
+                // IconButton(onPressed: () {}, icon: Icon(Icons.local_drink)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Container(
-                      height: 65.0,
-                      width: 60.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.grey,
-                            style: BorderStyle.solid,
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Icon(Icons.search, color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      height: 65.0,
-                      width: 60.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Colors.grey,
-                            style: BorderStyle.solid,
-                            width: 1.0),
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Center(
-                        child: Icon(Icons.shopping_basket, color: Colors.black),
-                      ),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return MinumanPage();
+                        }));
+                      },
+                      icon: Icon(Icons.local_drink),
+                      iconSize: 30.0,
                     ),
                     Container(
                       height: 65.0,
